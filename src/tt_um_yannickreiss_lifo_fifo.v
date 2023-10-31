@@ -11,10 +11,6 @@ module tt_um_yannickreiss_lifo_fifo (
     input  wire       rst_n     // reset_n - low to reset
 );
 
-assign uo_out = ui_in;
-assign uio_out = ui_in;
-assign uio_oe = ui_in;
-/*
     // set in- and outputs as needed
     assign uio_oe = 8'b0;
     assign uio_out = 8'b0;
@@ -31,6 +27,7 @@ assign uio_oe = ui_in;
     reg step;
     reg [7:0] oo_out;
 
+/*
     always @(posedge clk, negedge rst_n) begin
         if (clk && reset) begin
             for (int i = 0; i <= 255; i = i + 1) begin
@@ -74,9 +71,9 @@ assign uio_oe = ui_in;
             end
         end
     end
-
+*/
     assign push     = ui_in[0];
     assign pop      = ui_in[1];
     assign uo_out   = oo_out;
-*/
+
 endmodule
