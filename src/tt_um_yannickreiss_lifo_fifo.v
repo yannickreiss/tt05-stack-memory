@@ -28,16 +28,15 @@ module tt_um_yannickreiss_lifo_fifo (
     reg [7:0] oo_out;
 
     always @(posedge clk or negedge rst_n) begin
-        if (!clk && reset) begin
+        if (reset) begin
             for (int i = 0; i <= 255; i = i + 1) begin
                 stack[i] = 8'b0;
             end
 
             stack_pointer   <= 8'b0;
             step            <= 1'b0;
-        end else
-
-        if (clk && !reset) begin
+        end
+        else begin
             if (step == 1'b0) begin
 
                 // push:    set input on push
