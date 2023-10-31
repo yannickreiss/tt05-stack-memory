@@ -27,7 +27,6 @@ module tt_um_yannickreiss_lifo_fifo (
     reg step;
     reg [7:0] oo_out;
 
-/*
     always @(posedge clk, negedge rst_n) begin
         if (clk && reset) begin
             for (int i = 0; i <= 255; i = i + 1) begin
@@ -71,7 +70,7 @@ module tt_um_yannickreiss_lifo_fifo (
             end
         end
     end
-*/
+
     assign push     = ui_in[0];
     assign pop      = ui_in[1];
     assign uo_out   = oo_out;
