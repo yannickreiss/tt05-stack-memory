@@ -27,7 +27,7 @@ module tt_um_yannickreiss_lifo_fifo (
     reg step;
     reg [7:0] oo_out;
 
-    always @(negedge rst_n) begin
+    always @(posedge clk or negedge rst_n) begin
         if (!clk && reset) begin
             for (int i = 0; i <= 255; i = i + 1) begin
                 stack[i] = 8'b0;
@@ -35,10 +35,8 @@ module tt_um_yannickreiss_lifo_fifo (
 
             stack_pointer   <= 8'b0;
             step            <= 1'b0;
-        end
-    end
+        end else
 
-    always @(posedge clk) begin
         if (clk && !reset) begin
             if (step == 1'b0) begin
 
