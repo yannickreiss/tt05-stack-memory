@@ -26,7 +26,7 @@ architecture arch of tt_um_yannickreiss_stack is
     signal push     : std_logic := '0';
     signal pop      : std_logic := '0';
     signal stack_pointer : std_logic_vector(7 downto 0) := (others => '0');
-    type stack_mem is array(0 to 255) of std_logic_vector(7 downto 0);
+    type stack_mem is array(0 to 31) of std_logic_vector(7 downto 0);
     signal stack    : stack_mem := (others => (others => '0'));
     signal step     : std_logic := '0';
     signal oo_out   : std_logic_vector(7 downto 0) := (others => '0');
@@ -42,7 +42,7 @@ begin
 
                 -- push:    set input on push
                 if push = '1' then
-                    stack(to_integer(unsigned(stack_pointer))) <= ui_in;
+                    stack(to_integer(unsigned(stack_pointer(4 downto 0)))) <= ui_in;
                 end if;
 
                 -- pop:     lower stack stack_pointer
@@ -60,7 +60,7 @@ begin
 
                 -- pop:     read output
                 if pop = '1' then
-                    oo_out <= stack(to_integer(unsigned(stack_pointer)));
+                    oo_out <= stack(to_integer(unsigned(stack_pointer(4 downto 0))));
                 end if;
 
                 step <= '0';
