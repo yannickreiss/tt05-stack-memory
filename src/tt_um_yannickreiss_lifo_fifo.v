@@ -42,7 +42,7 @@ module tt_um_yannickreiss_lifo_fifo (
                 // push:    set input on push
                 if (push) begin
                     stack[stack_pointer] <= uio_in;
-                end else
+                end
 
                 // pop:     lower stack pointer
                 if (pop) begin
@@ -56,7 +56,7 @@ module tt_um_yannickreiss_lifo_fifo (
                 // push:    raise stack pointer
                 if (push) begin
                     stack_pointer <= stack_pointer + 1;
-                end else
+                end
 
                 // pop:     read output
                 if (pop) begin
